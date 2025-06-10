@@ -6,7 +6,7 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:33:39 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/02 14:04:36 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/06/08 19:11:51 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		return (NULL);
 	while (ptr[i] != '\0')
 	{
-		ptr[i] = 0;
+		ptr[i] = memset(nmemb, 0, size);
 		i++;
 	}
+	ptr[i] = '\0';
 	return (ptr);
 }
 int	main(void)
 {
-	int *src = calloc(2,2);
-	printf("%ls", src);
+	;
+	printf("%d", ft_calloc(5, 5));
 	free(src);
 }

@@ -6,7 +6,7 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 11:31:09 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/04 13:20:27 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/06/06 19:41:36 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,31 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t i;
 	i = 0;
-	size_t j;
-	j = 0;
-	char *result;
+	size_t k;
+	k = 0;
 	while(i <= len)
 	{
-		if(big[i] == little[j])
+		if(big[i] == little[k])
 		{
-			while(big[i] == little[j])
+			while (little[k] != '\0')
 			{
-				result[j] = little[j];
-				j++;
+				if(little[k] != big[i])
+				{
+					return(NULL);
+				}
+				k++;
+				i++;
 			}
+			return ((char *)&big[k + 1]);
 		}
 		i++;
 	}
-	result[i] = '\0';
-	return (result);
+	return (NULL);
 }
 int main()
 {
-	const char *largestring = "Foo Bar Baz";
-    const char *smallstring = "Bar";
+	char *largestring = "Foo Baz Bar";
+    char *smallstring = "Bar";
 	
-		   printf("%s", ft_strnstr(largestring, smallstring, 7));
+		   printf("%s\n", ft_strnstr(largestring, smallstring, 12));
 }
