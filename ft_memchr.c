@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 11:31:09 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/15 20:24:39 by bahkaya          ###   ########.fr       */
+/*   Created: 2025/06/12 16:30:54 by bahkaya           #+#    #+#             */
+/*   Updated: 2025/06/15 15:59:10 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <bsd/string.h>
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t		i;
-	size_t		k;
-	size_t		little_len;
+	unsigned int	i;
+	unsigned char	*str;
 
-	little_len = ft_strlen(little);
 	i = 0;
-	if (little[i] == '\0')
-		return ((char *)&big[i]);
-	if (len == 0)
-		return (NULL);
-	while (i <= len)
+	str = (unsigned char *)s;
+	while (i < n)
 	{
-		k = 0;
-		while (big[i + k] == little[k] && i + k < len && big[i + k] != '\0')
+		if (str[i] == (unsigned char)c)
 		{
-			k++;
-			if (k == little_len)
-				return ((char *)big + i);
+			return (&str[i]);
 		}
 		i++;
 	}

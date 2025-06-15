@@ -11,45 +11,65 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-static int ft_putnbr_len(int n)
+
+static int	ft_putnbr_len(int n)
 {
-	size_t len;
+	size_t	len;
+
 	len = 0;
-	while (n / 10 != 0)
+	if (n < 0)
 	{
+		len++;
+		n = -n;
+	}
+	if (n >= 0 && n <= 9)
+	{
+		return (len + 1);
+	}
+	while (n > 0)
+	{
+		n = n / 10;
 		len++;
 	}
 	return (len);
 }
-static char *ft_putstrnbr(int n)
+
+static char	*ft_putstr_nbr(int n, char *str_con, size_t str_con_len)
 {
-	size_t i;
-	i = 0;
-	char *str;
-	
-	if (n > 0 && n < 10)
+	if (n < 0)
 	{
-		str[i] = ft_putstrnbr(n % 10 + 48);
+		str_con[0] = '-';
+		n = -n;
 	}
-	return (str);
-}
-char *ft_itoa(int n)
-{
-	size_t i;
-	i = 0;
-	char *str_con = malloc(sizeof(char) * ft_putnbr_len(n) + 1);
-	while (str_con[i] != '\0')
+	while (n > 0)
 	{
-		str_con[i] = ft_putstrnbr(n);
-		i++;
+		str_con[str_con_len -1] = n % 10 + 48;
+		n = n / 10;
+		str_con_len--;
 	}
-	str_con[i] = '\0';
 	return (str_con);
 }
-int main()
+
+char	*ft_itoa(int n)
 {
-	int x = 9;
-	char *str = ft_itoa(x);
-	printf("%s", str);
-	free(str);
+	size_t	str_con_len;
+	char	*str_con;
+
+	if (n == 0)
+	{
+		str_con = ft_strdup("0");
+		return (str_con);
+	}
+	if (n == -2147483648)
+	{
+		str_con = ft_strdup("-2147483648");
+		return (str_con);
+	}
+	str_con_len = ft_putnbr_len(n);
+	str_con = malloc(sizeof(char) * str_con_len + 1);
+	if (!str_con)
+		return (NULL);
+	ft_putstr_nbr(n, str_con, str_con_len);
+	str_con[str_con_len] = '\0';
+	return (str_con);
 }

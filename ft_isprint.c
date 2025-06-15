@@ -6,7 +6,7 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 12:01:26 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/05/31 17:05:46 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/06/14 15:07:44 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isprint(int c)
 {
-	if (c >= 32 && c <= 127)
+	if (c >= 32 && c < 127)
 		return (1);
 	else
 		return (0);

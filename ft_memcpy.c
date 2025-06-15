@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 11:31:09 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/15 20:24:39 by bahkaya          ###   ########.fr       */
+/*   Created: 2025/06/11 20:25:17 by bahkaya           #+#    #+#             */
+/*   Updated: 2025/06/15 19:57:41 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <bsd/string.h>
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t		i;
-	size_t		k;
-	size_t		little_len;
+	size_t			i;
+	unsigned char	*c;
+	unsigned char	*x;
 
-	little_len = ft_strlen(little);
 	i = 0;
-	if (little[i] == '\0')
-		return ((char *)&big[i]);
-	if (len == 0)
+	c = (unsigned char *) dest;
+	x = (unsigned char *) src;
+	if (dest == NULL && src == NULL)
 		return (NULL);
-	while (i <= len)
+	while (i < n)
 	{
-		k = 0;
-		while (big[i + k] == little[k] && i + k < len && big[i + k] != '\0')
-		{
-			k++;
-			if (k == little_len)
-				return ((char *)big + i);
-		}
+		c[i] = x[i];
 		i++;
 	}
-	return (NULL);
+	return (c);
 }

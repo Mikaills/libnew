@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 11:31:09 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/15 20:24:39 by bahkaya          ###   ########.fr       */
+/*   Created: 2025/06/11 15:55:35 by bahkaya           #+#    #+#             */
+/*   Updated: 2025/06/15 13:57:31 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <bsd/string.h>
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t		i;
-	size_t		k;
-	size_t		little_len;
+	size_t	i;
+	size_t	s_len;
+	char	*str_ita;
 
-	little_len = ft_strlen(little);
 	i = 0;
-	if (little[i] == '\0')
-		return ((char *)&big[i]);
-	if (len == 0)
+	s_len = ft_strlen(s);
+	str_ita = malloc(sizeof(char) * s_len + 1);
+	if (!str_ita)
 		return (NULL);
-	while (i <= len)
+	while (s[i] != '\0')
 	{
-		k = 0;
-		while (big[i + k] == little[k] && i + k < len && big[i + k] != '\0')
-		{
-			k++;
-			if (k == little_len)
-				return ((char *)big + i);
-		}
+		str_ita[i] = f(i, s[i]);
 		i++;
 	}
-	return (NULL);
+	str_ita[i] = '\0';
+	return (str_ita);
 }

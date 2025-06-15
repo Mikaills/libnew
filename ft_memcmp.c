@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 16:27:36 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/05/28 16:46:56 by bahkaya          ###   ########.fr       */
+/*   Created: 2025/06/12 16:49:47 by bahkaya           #+#    #+#             */
+/*   Updated: 2025/06/14 15:18:26 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 
-int	main()
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	printf("%d\n", ft_isalnum('0'));
-	printf("%d\n", ft_isalpha('A'));
-	printf("%d\n", ft_isascii('A'));
-	printf("%d\n", ft_isprint('A'));
-	printf("%zu\n", ft_strlen("Deneme"));
-	printf("%s\n", ft_strchr("Deneme", 'n'));
-	printf("%d\n", ft_tolower('A'));
-	printf("%d\n", ft_toupper('a'));
-	printf("%d\n", ft_tolower('A'));
+	unsigned int	i;
+	unsigned char	*str1;
+	unsigned char	*str2;
+
+	str1 = (unsigned char *) s1;
+	str2 = (unsigned char *) s2;
+	i = 0;
+	while (i < n)
+	{
+		if (str1[i] != str2[i])
+		{
+			return (str1[i] - str2[i]);
+		}
+		i++;
+	}
+	return (0);
 }

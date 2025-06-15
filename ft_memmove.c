@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/29 14:38:54 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/11 19:39:29 by bahkaya          ###   ########.fr       */
+/*   Created: 2025/06/14 14:09:38 by bahkaya           #+#    #+#             */
+/*   Updated: 2025/06/15 20:00:54 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*ptr;
-	int		i;
+	size_t			i;
+	unsigned char	*s_x;
+	unsigned char	*dest_x;
 
+	s_x = (unsigned char *) src;
+	dest_x = (unsigned char *) dest;
 	i = 0;
-	ptr = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (!ptr)
-		return (NULL);
-	while (s[i] != '\0')
+	if (!s_x && !dest_x)
+		return (dest);
+	if (dest < src)
 	{
-		ptr[i] = s[i];
-		i++;
+		ft_memcpy(dest, src, n);
+		return (dest);
 	}
-	ptr[i] = '\0';
-	return (ptr);
+	while (i < n)
+	{
+		dest_x[n -1] = s_x[n - 1];
+		n--;
+	}
+	return (dest);
 }

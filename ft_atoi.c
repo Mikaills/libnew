@@ -6,7 +6,7 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 20:19:14 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/05/31 17:05:01 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/06/11 17:00:24 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
 		i++;
-	if (nptr[i] == '-')
+	if (nptr[i] == '+')
+		i++;
+	else if (nptr[i] == '-')
 	{
 		convert = -1;
 		i++;
