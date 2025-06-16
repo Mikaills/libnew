@@ -10,62 +10,90 @@
 // /*                                                                            */
 // /* ************************************************************************** */
 
-// #include "libft.h"
+#include "libft.h"
+// Your string which is given to your function is "Foo Bar Baz"
+// Your delimiter which is given to your function is " "
+// in conclusion the return that is given by your function would be like "Foo" "Bar" "Baz"
+
+static size_t arr_len (char const *s, char c)
+{
+	size_t arr_len;
+	size_t i;
+
+	i = 0;
+	while(s[i] != '\0')
+	{
+		if (s[i] == c)
+		{
+			arr_len++;
+		}
+		i++;
+	}
+	return (arr_len);
+}
+static size_t str_len(char const *s, char c)
+{
+	size_t i;
+	size_t str_len;
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+		{
+			i++;
+		}
+		str_len++;
+		i++;
+	}
+	return (str_len);
+}
+
+char **ft_split(char const *s, char c)
+{
+	size_t i;
+	size_t k;
+	size_t x;
+	size_t osman;
+	char **str;
 
 
-// size_t ft_contword(char const *s, char c)
-// {
-// 	size_t i;
-// 	size_t len;
+	osman = arr_len(s, c);
+	x = 0;
+	k = 0;
+	i = 0;
+	str = malloc(sizeof(char *) * osman);
 
-// 	i = 0;
-// 	len = 0;
-// 	while(s[i] != '\0')
-// 	{
-// 		if(s[i] == c)
-// 		{
-// 			len++;
-// 		}
-// 		i++;
-// 	}
+	while (i < osman)
+	{
+		str[i] = malloc(sizeof(char) * (str_len(s, c) + 1));
+		i++;
+	}
+	i = 0;
+	while (s[k] != '\0')
+	{
+		if (s[k] != c)
+		{
+			str[i][x] = s[k];
+			x++;
+		}
+		k++;
+		i++;
+	}
 
-// }
+}
+int main()
+{
+	char *str = "Foo Bar";
+	char c = ' ';
 
-// char **ft_split(char const *s, char c)
-// {
-// 	size_t i;
-// 	size_t k;
-// 	size_t x;
-	
-// 	x = 0;
-// 	i = 0;
-// 	k = 0;
-// 	char **str_arr = malloc(sizeof(char) * ft_strlen(s) + 1);
-// 	while(*str_arr[i] != '\0')
-// 	{
-// 		k = 0;
-// 		while(str_arr[i][k] != c)
-// 		{
-// 			str_arr[i][k] = s[x];
-// 			k++;
-// 		}
-// 		str_arr[i][k] = '\0';
-// 		x++;
-// 		i++;
-// 	}
-// 	return (str_arr);
-// }
-// int main()
-// {
-// char *str = "Foo Bar Baz";
-// char set = ' ';
-// char **str_arr = ft_split (str, set);
-// size_t i = 0;
-// size_t k = 0;
-// while (str_arr[i][k] != '\0')
-// 	{
-	
-// 		printf("%c\n", str_arr[i][k] );
-// 		k++;
-// 	}
-// }
+	char **o = ft_split (str, c);
+	size_t k;
+	size_t i;
+	k = 0;
+	i = 0;
+	while (o[i])
+	{
+		printf("%s", o[i]);
+		i++;
+	}
+}

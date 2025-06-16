@@ -6,7 +6,7 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:54:27 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/14 19:53:13 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/06/16 17:13:37 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] != '\0')

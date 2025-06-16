@@ -6,12 +6,11 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 11:31:09 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/15 20:24:39 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/06/16 15:58:08 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <bsd/string.h>
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
