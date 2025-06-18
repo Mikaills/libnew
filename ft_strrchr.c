@@ -6,7 +6,7 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:18:03 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/15 13:18:33 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/06/18 13:54:59 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int i;
-
+	int	i;
 
 	i = ft_strlen(s);
 	while (i >= 0)

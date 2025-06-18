@@ -6,7 +6,7 @@
 #    By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 16:24:29 by bahkaya           #+#    #+#              #
-#    Updated: 2025/06/14 15:05:07 by bahkaya          ###   ########.fr        #
+#    Updated: 2025/06/18 12:02:04 by bahkaya          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ fclean:	clean
 re: fclean all
 
 vscode: 
-	code .
+	@code .
 
 
 pclean: $(P)

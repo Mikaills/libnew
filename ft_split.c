@@ -1,99 +1,130 @@
-// /* ************************************************************************** */
-// /*                                                                            */
-// /*                                                        :::      ::::::::   */
-// /*   ft_split.c                                         :+:      :+:    :+:   */
-// /*                                                    +:+ +:+         +:+     */
-// /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
-// /*                                                +#+#+#+#+#+   +#+           */
-// /*   Created: 2025/06/08 19:12:55 by bahkaya           #+#    #+#             */
-// /*   Updated: 2025/06/08 19:12:55 by bahkaya          ###   ########.fr       */
-// /*                                                                            */
-// /* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/08 19:12:55 by bahkaya           #+#    #+#             */
+/*   Updated: 2025/06/08 19:12:55 by bahkaya          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
-// Your string which is given to your function is "Foo Bar Baz"
-// Your delimiter which is given to your function is " "
-// in conclusion the return that is given by your function would be like "Foo" "Bar" "Baz"
 
-static size_t arr_len (char const *s, char c)
+static size_t    arr_len(char const *s, char c)
 {
-	size_t arr_len;
-	size_t i;
+    size_t    len;
+    size_t    i;
 
-	i = 0;
-	while(s[i] != '\0')
-	{
-		if (s[i] == c)
-		{
-			arr_len++;
-		}
-		i++;
-	}
-	return (arr_len);
+    i = 0;
+    len = 0;
+    while (s[i] != '\0')
+    {
+        while (s[i] == c)
+            i++;
+        while (s[i] != c && s[i] != '\0')
+            i++;
+        len++;
+        if (s[i] == '\0')
+          return (len);
+        i++;
+    }
+    return (len);
 }
-static size_t str_len(char const *s, char c)
+
+static size_t	ft_str_len(char const *s, size_t start, char c)
 {
-	size_t i;
-	size_t str_len;
+	size_t	len;
+
+	len = 0;
+	while (s[start] != c)
+	{
+		len++;
+		start++;
+	}
+	return (len);
+}
+void	*ft_free_str(char **str, size_t k, size_t arr_size)
+{
+	while (k < arr_size)
+	{
+		free(str[k]);
+		k--;
+	}
+	free(str);
+	return (NULL);
+}
+
+char	**ft_put_str(char const *s, char c, char **str)
+{
+	size_t	i;
+	size_t	k;
+	size_t	str_len;
+
 	i = 0;
+	k = 0;
+	str_len = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == c)
-		{
+		while (s[i] == c)
 			i++;
+		if (s[i] != c)
+		{
+			str_len = ft_str_len(s, i, c);
+			str[k] = ft_substr(s, i, str_len);
+			k++;
+			i += str_len;
 		}
-		str_len++;
 		i++;
 	}
-	return (str_len);
+	str[k] = '\0';
+	return (str);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	size_t i;
-	size_t k;
-	size_t x;
-	size_t osman;
-	char **str;
+	size_t	arr_size;
+	char	**str;
+	size_t	i;
 
+	if(!s)
+		return (NULL);
+	arr_size = arr_len(s, c);
+	str = malloc(sizeof(char *) * arr_size + 1);
+	str = ft_put_str(s, c, str);
 
-	osman = arr_len(s, c);
-	x = 0;
-	k = 0;
-	i = 0;
-	str = malloc(sizeof(char *) * osman);
-
-	while (i < osman)
-	{
-		str[i] = malloc(sizeof(char) * (str_len(s, c) + 1));
-		i++;
-	}
-	i = 0;
-	while (s[k] != '\0')
-	{
-		if (s[k] != c)
-		{
-			str[i][x] = s[k];
-			x++;
-		}
-		k++;
-		i++;
-	}
-
+	if (!str)
+		return(ft_free_str(str, i, arr_size));
+	return (str);
 }
 int main()
 {
-	char *str = "Foo Bar";
-	char c = ' ';
-
-	char **o = ft_split (str, c);
-	size_t k;
 	size_t i;
-	k = 0;
 	i = 0;
-	while (o[i])
+	char *s = "                      Foo        Bar Baz";
+	char c = ' ';
+	char **str;
+	str = ft_split(s, c);
+	while(i < 3)
 	{
-		printf("%s", o[i]);
+		printf("%s\n", str[i]);
 		i++;
+		free(str[i]);
 	}
+	free(str);
 }
+
+
+/*lorem$
+ ipsu$
+ ipsu$
+em $
+ ipsu$
+ dolor sit $
+m dolor si$
+ ipsu$
+em $
+em $
+ipsum $
+ Sed non risus. Suspendisse$*/
