@@ -6,7 +6,7 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:18:03 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/18 13:54:59 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/06/19 16:47:55 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ char	*ft_strrchr(const char *s, int c)
 	{
 		if (s[i] == (unsigned char )c)
 		{
-			return ((char *)s + i);
+			return ((char *)&s[i]);
 		}
 		i--;
 	}
+	if (c == '\0')
+		return ((char *)&s[i]);
 	return (NULL);
 }

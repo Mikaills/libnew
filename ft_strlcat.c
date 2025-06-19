@@ -6,12 +6,11 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:49:46 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/18 16:14:50 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/06/19 16:01:00 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <bsd/string.h>
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {

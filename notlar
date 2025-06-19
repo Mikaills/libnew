@@ -1,0 +1,8 @@
+bzero 0 attığını kanıtla
+calloc neden var ?
+-- cünkü garbage değer var ise onu temizlersin ***
+isalpha gibi fonksiyonlar neden int olarak veriyoruz ???
+memcpy ve memmove arasındaki fark ??
+memset float bi yazdır (yazabiliyon mu diye)
+memset 1 veya 2 byte gelen yazıları yazdır ve bunun (-) değeri yazıdır
+memchr

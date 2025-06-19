@@ -6,7 +6,7 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 20:25:17 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/15 19:57:41 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/06/19 16:48:28 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	i = 0;
 	c = (unsigned char *) dest;
 	x = (unsigned char *) src;
-	if (dest == NULL && src == NULL)
+	if (c == NULL && x == NULL)
 		return (NULL);
 	while (i < n)
 	{

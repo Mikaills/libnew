@@ -6,7 +6,7 @@
 #    By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 16:24:29 by bahkaya           #+#    #+#              #
-#    Updated: 2025/06/18 12:02:04 by bahkaya          ###   ########.fr        #
+#    Updated: 2025/06/19 14:49:39 by bahkaya          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,16 +55,8 @@ OBJECTS = $(SOURCE:.c=.o)
 
 all: $(NAME)
 $(NAME): $(OBJECTS)
-	ar rc -o $(NAME) $(OBJECTS)
+	ar rcs -o $(NAME) $(OBJECTS)
 
-
-cc: $(P)
-$(P): rft_memset.c
-	$(CC) $(CFLAGS) -o $(P) rft_memset.c
-run:
-	./$(P)
-
-	
 clean:
 	rm -rf $(OBJECTS)
 
@@ -74,11 +66,16 @@ fclean:	clean
 
 re: fclean all
 
+.PHONY: all clean fclean re vscode cc run pclean
+
 vscode: 
 	@code .
 
+cc: $(P)
+$(P):
+	@$(CC) $(CFLAGS) program.c libft.a 
+run:
+	@./a.out
 
 pclean: $(P)
-	rm -rf $(P)
-
-.PHONY: all clean fclean re
+	@rm -rf $(P)

@@ -6,7 +6,7 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 16:49:47 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/14 15:18:26 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/06/19 15:37:56 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned int	i;
+	size_t			i;
 	unsigned char	*str1;
 	unsigned char	*str2;
 
