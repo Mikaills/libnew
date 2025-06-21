@@ -34,12 +34,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = 0;
 	s_len = ft_strlen(s);
 	if (s_len <= start)
-	{
-		substr = ft_strdup("");
-		return (substr);
-	}
+		return (ft_strdup(""));
 	sub_len = ft_check_len(start, len, s_len);
-	substr = malloc(sizeof(char) * (sub_len + 1));
+	substr = malloc((sub_len + 1));
 	if (!substr)
 		return (NULL);
 	while (i < len)
